@@ -3,6 +3,10 @@
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', '.']
 
+" git signs setup
+lua << EOF
+require('gitsigns').setup()
+EOF
 
 " Telescope fuzzy finder settings
 lua << EOF
