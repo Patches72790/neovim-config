@@ -1,0 +1,11 @@
+{
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-14",
+            "path": "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home",
+            "default": true
+        }
+    ],
+    "python.venvPath": "/usr/local/lib/python3.9/site-packages"
+}
+
