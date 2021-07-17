@@ -16,10 +16,9 @@ set incsearch
 set undodir=~/.config/nvim/undodir
 set backupdir=~/.config/nvim/backupdir
 set directory=~/.config/nvim/backupdir
-
-
+set completeopt=menuone,noselect
 
 " color settings
 colorscheme gruvbox
 set background=dark
-
+set termguicolors

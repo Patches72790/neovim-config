@@ -1,12 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
+Plug 'doums/darcula'
 
 " language packs
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'rust-lang/rust.vim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier', { 'do': 'npm install'}
+Plug 'hrsh7th/nvim-compe'
 
 " vim stuff 
 Plug 'mbbill/undotree'
