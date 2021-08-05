@@ -8,8 +8,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'rust-lang/rust.vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
 Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 Plug 'hrsh7th/nvim-compe'
+Plug 'mfussenegger/nvim-jdtls'
 
 " vim stuff 
 Plug 'mbbill/undotree'
