@@ -1,3 +1,5 @@
+local vim = vim
+
 local nvim_lsp = require("lspconfig")
 
 local format_async = function(err, _, result, _, bufnr)
@@ -111,7 +113,6 @@ nvim_lsp.diagnosticls.setup {
         formatFiletypes = formatFiletypes
     }
 }
-
 
 -- config that activates keymaps and enables snippet support
 local function make_config()

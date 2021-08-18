@@ -23,5 +23,5 @@ GRADLE_HOME=$HOME/gradle $JAVA_HOME/bin/java \
   -data "${1:-$HOME/workspace}" \
   --add-modules=ALL-SYSTEM \
   --add-opens java.base/java.util=ALL-UNNAMED \
-  --add-opens java.base/java.lang=ALL-UNNAMED
+  --add-opens java.base/java.lang=ALL-UNNAMED  
 

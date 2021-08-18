@@ -1,5 +1,7 @@
 " Keymapping config
 
+inoremap jk <ESC>
+
 " use Tab and Shift Tab for completion list traversal
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

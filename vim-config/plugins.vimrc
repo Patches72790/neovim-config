@@ -95,14 +95,6 @@ require('telescope').setup{
 EOF
 
 lua << EOF
-    require('lspconfig').jsonls.setup{}
-EOF
-
-lua << EOF
-    require('lspconfig').rust_analyzer.setup{}
-EOF
-
-lua << EOF
     local function setup_servers()
       require'lspinstall'.setup()
       local servers = require'lspinstall'.installed_servers()
