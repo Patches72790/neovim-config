@@ -113,5 +113,5 @@ lua << EOF
 EOF
 
 lua << EOF
--- require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'.git', 'pom.xml', 'gradle.build'})})
+  require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}, root_dir = require('jdtls.setup').find_root({'.git', 'pom.xml', 'gradle.build'})})
 EOF
