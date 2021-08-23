@@ -28,7 +28,7 @@ end
 local on_attach = function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-    vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
+    vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting_seq_sync()")
     vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
     vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
     vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
@@ -62,12 +62,6 @@ local on_attach = function(client, bufnr)
     end
 end
 
-nvim_lsp.tsserver.setup {
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client)
-    end
-}
 
 local filetypes = {
     typescript = "eslint",
@@ -103,6 +97,29 @@ local formatFiletypes = {
     typescriptreact = "prettier"
 }
 
+
+-- Setup LspInstall language servers
+local function setup_servers()
+    require('lspinstall').setup()
+    local servers = require('lspinstall').installed_servers()
+    for _, server in pairs(servers) do
+        require('lspconfig')[server].setup{}
+    end
+end
+setup_servers()
+require('lspinstall').post_install_hook = function()
+    setup_servers()
+    vim.cmd('bufdo e')
+end
+
+
+nvim_lsp.tsserver.setup {
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client)
+    end
+}
+
 nvim_lsp.diagnosticls.setup {
     on_attach = on_attach,
     filetypes = vim.tbl_keys(filetypes),
@@ -115,13 +132,13 @@ nvim_lsp.diagnosticls.setup {
 }
 
 -- config that activates keymaps and enables snippet support
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return {
-    -- enable snippet support
-    capabilities = capabilities,
-    -- map buffer local keybindings when the language server attaches
-    on_attach = on_attach,
-  }
-end
+--local function make_config()
+--  local capabilities = vim.lsp.protocol.make_client_capabilities()
+--  capabilities.textDocument.completion.completionItem.snippetSupport = true
+--  return {
+--    -- enable snippet support
+--    capabilities = capabilities,
+--    -- map buffer local keybindings when the language server attaches
+--    on_attach = on_attach,
+--  }
+--end
