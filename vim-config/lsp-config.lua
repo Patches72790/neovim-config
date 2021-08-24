@@ -83,7 +83,8 @@ local linters = {
             endColumn = "endColumn",
             message = "${message} [${ruleId}]",
             security = "severity"
-        },
+        }, 
+        indent = {"error", 4},
         securities = {[2] = "error", [1] = "warning"}
     }
 }
@@ -106,14 +107,14 @@ local function setup_servers()
         require('lspconfig')[server].setup{}
     end
 end
+
 setup_servers()
 require('lspinstall').post_install_hook = function()
     setup_servers()
     vim.cmd('bufdo e')
 end
 
-
-nvim_lsp.tsserver.setup {
+nvim_lsp.tsserver.setup{
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)

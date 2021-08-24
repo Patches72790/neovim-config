@@ -12,6 +12,7 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-jdtls'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 
 " vim stuff 
 Plug 'mbbill/undotree'
