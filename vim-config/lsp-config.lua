@@ -177,4 +177,4 @@ start_jdtls()
 vim.o.updatetime = 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
 
-
+require('nvim-web-devicons').setup{}
