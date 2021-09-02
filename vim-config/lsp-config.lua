@@ -171,3 +171,10 @@ start_jdtls()
 --    on_attach = on_attach,
 --  }
 --end
+
+-- miscellaneous ui customization
+-- show box when cursor is over diagnostic
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+
+
