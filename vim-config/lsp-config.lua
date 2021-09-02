@@ -1,5 +1,4 @@
 local vim = vim
-
 local nvim_lsp = require("lspconfig")
 
 local format_async = function(err, _, result, _, bufnr)
@@ -98,6 +97,25 @@ local formatFiletypes = {
     typescriptreact = "prettier"
 }
 
+-- typescript server setup
+nvim_lsp.tsserver.setup{
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client)
+    end
+}
+
+-- diagnostic language server setup
+nvim_lsp.diagnosticls.setup {
+    on_attach = on_attach,
+    filetypes = vim.tbl_keys(filetypes),
+    init_options = {
+        filetypes = filetypes,
+        linters = linters,
+        formatters = formatters,
+        formatFiletypes = formatFiletypes
+    }
+}
 
 -- Setup LspInstall language servers
 local function setup_servers()
@@ -114,23 +132,33 @@ require('lspinstall').post_install_hook = function()
     vim.cmd('bufdo e')
 end
 
-nvim_lsp.tsserver.setup{
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        on_attach(client)
-    end
-}
 
-nvim_lsp.diagnosticls.setup {
-    on_attach = on_attach,
-    filetypes = vim.tbl_keys(filetypes),
-    init_options = {
-        filetypes = filetypes,
-        linters = linters,
-        formatters = formatters,
-        formatFiletypes = formatFiletypes
+-- Java DT language server
+local function start_jdtls()
+    local cmd = {'java-lsp.sh'}
+    local settings = {
+        configuration = {
+            runtimes = {
+                {
+                    name = 'JavaSE-16',
+                    path = '/usr/lib/jvm/java-1.16.0-openjdk-amd64/'
+                },
+                {
+                    name = 'JavaSE-14',
+                    path = '/usr/lib/jvm/java-14-openjdk-amd64/'
+                },
+                {
+                    name = 'JavaSE-11',
+                    path = '/usr/lib/jvm/java-11-openjdk-amd64/'
+                }
+            }
+        }
     }
-}
+
+    require('lspconfig').jdtls.setup{ cmd = cmd, settings = settings }
+end
+
+start_jdtls()
 
 -- config that activates keymaps and enables snippet support
 --local function make_config()

@@ -19,6 +19,7 @@ set directory=~/.config/nvim/backupdir
 set completeopt=menuone,noselect,noinsert
 
 " color settings
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme darcula
 set background=dark
 set termguicolors
