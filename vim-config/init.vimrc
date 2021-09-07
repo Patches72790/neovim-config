@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'doums/darcula'
 
-" language packs
+" language tools 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'rust-lang/rust.vim'
@@ -13,6 +13,11 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 Plug 'hrsh7th/nvim-compe'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+
+" Debugger tools
+Plug 'puremourning/vimspector'
+Plug 'nvim-telescope/telescope-vimspector.nvim'
+
 
 " vim stuff 
 Plug 'mbbill/undotree'
