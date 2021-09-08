@@ -17,6 +17,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 " Debugger tools
 Plug 'puremourning/vimspector'
 Plug 'nvim-telescope/telescope-vimspector.nvim'
+Plug 'mfussenegger/nvim-dap'
 
 " vim stuff 
 Plug 'mbbill/undotree'

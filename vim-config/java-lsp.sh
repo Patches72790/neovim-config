@@ -10,7 +10,7 @@
 # to point to the `config_mac' or `config_win` folders depending on your system.
 
 JAR="$HOME/.cache/nvim/nvim_lsp/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-GRADLE_HOME=$HOME/gradle  /usr/lib/jvm/java-16-openjdk-amd64/bin/java \
+GRADLE_HOME=$HOME/gradle /usr/lib/jvm/java-16-openjdk-amd64/bin/java \
   -Declipse.application=org.eclipse.jdt.ls.core.id1 \
   -Dosgi.bundles.defaultStartLevel=4 \
   -Declipse.product=org.eclipse.jdt.ls.core.product \
@@ -23,5 +23,5 @@ GRADLE_HOME=$HOME/gradle  /usr/lib/jvm/java-16-openjdk-amd64/bin/java \
   -data "${1:-$HOME/workspace}" \
   --add-modules=ALL-SYSTEM \
   --add-opens java.base/java.util=ALL-UNNAMED \
-  --add-opens java.base/java.lang=ALL-UNNAMED  
+  --add-opens java.base/java.lang=ALL-UNNAMED 
 

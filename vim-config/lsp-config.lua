@@ -136,13 +136,13 @@ end
 -- Java DT language server
 local function start_jdtls()
     local cmd = {'java-lsp.sh'}
+    local init_options = {
+        bundles = {
+            "/home/patroclus/.java-debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.32.0.jar"
+        }
+    }
     local settings = {
         configuration = {
-            init_options = {
-                bundles = {
-                    "/home/patroclus/.java-debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.32.0.jar"
-                }
-            },
             runtimes = {
                 {
                     name = 'JavaSE-16',
@@ -160,22 +160,10 @@ local function start_jdtls()
         }
     }
 
-    require('lspconfig').jdtls.setup{ cmd = cmd, settings = settings }
+    require('lspconfig').jdtls.setup{ cmd = cmd, init_options = init_options }
 end
 
 start_jdtls()
-
--- config that activates keymaps and enables snippet support
---local function make_config()
---  local capabilities = vim.lsp.protocol.make_client_capabilities()
---  capabilities.textDocument.completion.completionItem.snippetSupport = true
---  return {
---    -- enable snippet support
---    capabilities = capabilities,
---    -- map buffer local keybindings when the language server attaches
---    on_attach = on_attach,
---  }
---end
 
 -- miscellaneous ui customization
 -- show box when cursor is over diagnostic
