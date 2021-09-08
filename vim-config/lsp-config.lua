@@ -138,6 +138,11 @@ local function start_jdtls()
     local cmd = {'java-lsp.sh'}
     local settings = {
         configuration = {
+            init_options = {
+                bundles = {
+                    "/home/patroclus/.java-debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.32.0.jar"
+                }
+            },
             runtimes = {
                 {
                     name = 'JavaSE-16',
