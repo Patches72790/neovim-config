@@ -141,26 +141,16 @@ local function start_jdtls()
             "/home/patroclus/.java-debug/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.32.0.jar"
         }
     }
-    local settings = {
-        configuration = {
-            runtimes = {
-                {
-                    name = 'JavaSE-16',
-                    path = '/usr/lib/jvm/java-1.16.0-openjdk-amd64/'
-                },
-                {
-                    name = 'JavaSE-14',
-                    path = '/usr/lib/jvm/java-14-openjdk-amd64/'
-                },
-                {
-                    name = 'JavaSE-11',
-                    path = '/usr/lib/jvm/java-11-openjdk-amd64/'
-                }
-            }
-        }
-    }
+    local params = {
+        ["command"] = "vscode.java.startDebugSession";
+    };
+    local on_attach = function(client, bufnr)
+        local result, err = client.request_sync("workspace/executeCommand", params, nil, bufnr)
+        if result then _G.test_result = result end
+--        vim.api.nvim_exec("[[ call vimspector#LaunchWithSettings({ 'DAPPort': result })]]", true);
+    end
 
-    require('lspconfig').jdtls.setup{ cmd = cmd, init_options = init_options }
+    require('lspconfig').jdtls.setup{ cmd = cmd, init_options = init_options, on_attach = on_attach }
 end
 
 start_jdtls()
